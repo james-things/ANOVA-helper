@@ -42,7 +42,7 @@ public class ANOVAHelper {
         float ssError = 0;
         float ssTotal = 0;
 
-        out.println("\nSet A Header\tYij\t Mean Yi\tMean ∑Y ");
+        out.println("Set A Header\tYij\t Mean Yi\tMean ∑Y ");
         for (float number : numbersA) {
             // initialize sum of squares data
             float ssfValue = (float) Math.pow((meanA - totalMean), 2);
