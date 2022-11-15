@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 import static java.lang.System.out;
 
 public class ANOVAHelper {
@@ -7,6 +9,8 @@ public class ANOVAHelper {
     static float nB = numbersB.length;  // n of Set B (# participants)
     static float N = nA + nB;  // N of study (# total participation)
     static float k = 2;  // K of study (# groups)
+    private static final DecimalFormat trimDigits = new DecimalFormat("#.##");
+
 
     public static void main(String[] args) {
         float meanA = getMean(numbersA);  // get A mean
@@ -18,8 +22,8 @@ public class ANOVAHelper {
         for (float f : numbersA) out.print((int) f + " ");
         out.print("\nB: ");
         for (float f : numbersB) out.print((int) f + " ");
-        out.println("\nk of A: " + nA);
-        out.println("k of B: " + nB);
+        out.println("\nn of A: " + nA);
+        out.println("n of B: " + nB);
         out.println("N of Study: " + N);
         out.println("mean of A: " + meanA);
         out.println("mean of B: " + meanB);
@@ -38,7 +42,7 @@ public class ANOVAHelper {
         float ssError = 0;
         float ssTotal = 0;
 
-        out.println("Set A Header\t Yij\t M,Yi\t M,EY");
+        out.println("\nSet A Header\tYij\t Mean Yi\tMean ∑Y ");
         for (float number : numbersA) {
             // initialize sum of squares data
             float ssfValue = (float) Math.pow((meanA - totalMean), 2);
@@ -52,11 +56,12 @@ public class ANOVAHelper {
 
             counterA += 1;
             out.printf("Set A Time %s: \t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s%n",
-                    counterA, number, meanA, totalMean, meanA - totalMean, number - totalMean,
-                    number - meanA, ssfValue, sseValue, sstValue);
+                    counterA, number, meanA, totalMean, trimDigits.format(meanA - totalMean),
+                    trimDigits.format(number - totalMean), trimDigits.format(number - meanA),
+                    trimDigits.format(ssfValue), trimDigits.format(sseValue), trimDigits.format(sstValue));
         }
 
-        out.println("\nSet B Header\t Yij\t Mean Yi\t Mean ∑Y ");
+        out.println("\nSet B Header\tYij\t Mean Yi\tMean ∑Y ");
         for (float number : numbersB) {
             // initialize sum of squares data
             float ssfValue = (float) Math.pow(meanB - totalMean, 2);
@@ -70,8 +75,9 @@ public class ANOVAHelper {
 
             counterB += 1;
             out.printf("Set B Time %s: \t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s%n",
-                    counterB, number, meanB, totalMean, meanB - totalMean, number - totalMean,
-                    number - meanB, ssfValue, sseValue, sstValue);
+                    counterB, number, meanB, totalMean, trimDigits.format(meanB - totalMean),
+                    trimDigits.format(number - totalMean), trimDigits.format(number - meanB),
+                    trimDigits.format(ssfValue), trimDigits.format(sseValue), trimDigits.format(sstValue));
         }
 
         // calculate degrees of freedom
@@ -80,8 +86,10 @@ public class ANOVAHelper {
         float dfTotal = N - 1;
 
         // output sum of squares and degrees of freedom
-        out.printf("%nSums of Squares:    \t SS(Factor): %s\t SS(Error): %s\t SS(Total): %s",ssFactor,ssError,ssTotal);
-        out.printf("%nDegrees of Freedom: \t dF(Factor): %s\t dF(Error): %s\t dF(Total): %s", dFFactor, dFError, dfTotal);
+        out.printf("%nSums of Squares:    \t SS(Factor): %s\t SS(Error): %s\t SS(Total): %s",
+                trimDigits.format(ssFactor),trimDigits.format(ssError),trimDigits.format(ssTotal));
+        out.printf("%nDegrees of Freedom: \t dF(Factor): %s\t dF(Error): %s\t dF(Total): %s",
+                trimDigits.format(dFFactor), trimDigits.format(dFError), trimDigits.format(dfTotal));
 
         // calculate mean squares and f ratio
         float meanSqrFactor = ssFactor / dFFactor;
@@ -89,7 +97,8 @@ public class ANOVAHelper {
         float fRatio = meanSqrFactor / meanSqrError;
 
         // output mean squares and f ratio
-        out.printf("%nMean Sqares/F Ratio:\t mSq(Factor): %s\t mSq(Error): %s\t F Ratio: %s",meanSqrFactor,meanSqrError,fRatio);
+        out.printf("%nMean Sqares/F Ratio:\t mSq(Factor): %s\t mSq(Error): %s\t F Ratio: %s",
+                trimDigits.format(meanSqrFactor),trimDigits.format(meanSqrError),trimDigits.format(fRatio));
 
     }
 
