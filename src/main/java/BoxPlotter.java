@@ -19,15 +19,12 @@ public class BoxPlotter extends ApplicationFrame { // the MyBoxPlot library will
     public BoxPlotter() {
 
         super("Box Plot");
-
         final BoxAndWhiskerCategoryDataset dataset = createSampleDataset();
-
         final CategoryAxis xAxis = new CategoryAxis("Group");
         final NumberAxis yAxis = new NumberAxis("Time (Seconds)");
         yAxis.setAutoRangeIncludesZero(false);
         final BoxAndWhiskerRenderer renderer = new BoxAndWhiskerRenderer();
         renderer.setFillBox(false);
-        // renderer.setToolTipGenerator(new BoxAndWhiskerToolTipGenerator());
         final CategoryPlot plot = new CategoryPlot(dataset, xAxis, yAxis, renderer);
 
         final JFreeChart chart = new JFreeChart(
@@ -43,17 +40,12 @@ public class BoxPlotter extends ApplicationFrame { // the MyBoxPlot library will
     }
 
     private BoxAndWhiskerCategoryDataset createSampleDataset() {
-
-        final int seriesCount = 1;
-        final int categoryCount = 2;
-        final int entityCount = 10;
-
         final DefaultBoxAndWhiskerCategoryDataset dataset = new DefaultBoxAndWhiskerCategoryDataset();
         List<Double> ListA = new ArrayList<>(Arrays.asList(12.0, 9.0, 11.0, 17.0, 21.0, 16.0, 23.0, 14.0, 15.0, 24.0));
         List<Double> ListB = new ArrayList<>(Arrays.asList(5.0, 8.0, 11.0, 9.0, 12.0, 6.0, 8.0, 7.0, 13.0, 11.0));
 
-        dataset.add(ListA, "Series " + 1, " Group A");
-        dataset.add(ListB, "Series " + 1, " Group B");
+        dataset.add(ListA, "Exit Time Study", " Group A");
+        dataset.add(ListB, "Exit Time Study", " Group B");
 
         return dataset;
     }
