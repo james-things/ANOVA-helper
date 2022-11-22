@@ -1,0 +1,57 @@
+{
+	"columnb": {
+		"question":"What is your age?",
+		"values1":[42,44,34,28,37,25,36,26,33,30,25,26,24,23,43,28,28,39,28,28,35,30,23,24,24],
+		"values2":[44,33,24,35,28,24,27,42,37,27,23,36,24,28,40,30,25,27,26,26,23,25,28,26,34,27,],
+	},
+	"columnd": {
+		"question":"I play video games often.",
+		"values1":[7,2,6,9,8,7,2,10,2,10,5,7,10,5,8,3,5,2,7,7,7,1,1,6,8,10,6,2],
+		"values2":[2,8,10,7,7,2,6,6,8,7,9,5,4,10,9,4,9,7,7,9,3,8,10,1,10,8,10],
+	},
+	"columne": {
+		"question":"How effective overall were the visual representations of game interactions and events?",
+		"values1":[6,8,10,7,5,7,3,8,7,10,4,7,5,6,8,8,10,3,10,8,7,5,10,7,6,9,7,10],
+		"values2":[9,10,9,7,10,10,9,8,9,9,9,10,7,8,9,7,7,9,7,8,7,10,10,10,8,10,9],
+	},
+	"columnf": {
+		"question":"How effective overall were the audio representations of game interactions and events?",
+		"values1":[8,7,10,9,10,8,5,5,8,10,4,10,9,7,8,10,8,5,9,8,7,5,10,7,7,9,6,10],
+		"values2":[9,10,9,7,10,9,9,10,8,10,10,6,8,8,9,7,7,9,9,8,7,9,10,10,8,10,8],
+	},
+	"columng": {
+		"question":"How clear were the intended controls for the game?",
+		"values1":[10,9,6,6,10,8,3,10,7,10,3,8,10,7,8,10,10,5,10,10,6,5,10,7,8,10,7,10],
+		"values2":[10,10,8,7,10,10,8,6,10,10,8,7,9,10,9,4,8,9,10,8,9,10,10,10,10,10,9],
+	},
+	"columnh": {
+		"question":"How would you rate the clarity of the game's objective?",
+		"values1":[7,5,6,6,3,6,3,10,6,10,4,7,9,7,8,3,10,5,10,10,6,10,10,6,6,4,7,10],
+		"values2":[9,10,10,7,10,10,8,8,9,8,8,10,7,10,9,3,8,9,9,8,7,9,10,10,10,10,8],
+	},
+	"columni": {
+		"question":"How intuitive were the game's menus (out of game UI)? ",
+		"values1":[8,8,10,10,10,8,3,10,10,10,6,10,10,7,8,6,8,5,10,9,7,5,10,6,5,10,7,10],
+		"values2":[9,10,9,7,9,10,9,8,9,9,10,5,10,7,9,8,7,9,8,,9,9,10,10,10,10,9],
+	},
+	"columnj": {
+		"question":"How intuitive was the in-game HUD?",
+		"values1":[8,8,8,9,8,7,3,10,7,10,6,9,,7,8,10,5,6,10,9,7,5,10,6,7,10,7,10],
+		"values2":[9,10,10,8,9,10,8,8,10,9,10,8,8,8,9,7,7,9,8,8,9,7,8,10,10,10,9],
+	},
+	"columnk": {
+		"question":"How would you rate the usability of the in-game pause menu? (we had implementation challenges with a clickable version)",
+		"values1":[9,5,10,9,8,7,3,10,8,10,4,10,,7,8,8,10,6,8,9,8,5,10,6,5,10,7,9],
+		"values2":[9,10,8,7,10,10,9,10,5,9,9,8,8,10,9,6,7,9,10,8,7,8,6,10,8,10,8],
+	},
+	"columnn": {
+		"question":"How would you rate the overall quality of interactions with objects within the game world?",
+		"values1":[8,6,10,8,10,5,3,8,8,10,3,9,10,8,7,8,8,5,10,9,6,5,10,7,6,10,8,10],
+		"values2":[9,10,9,8,10,10,8,9,9,9,8,10,9,4,7,9,8,4,9,10,10,9,10,],
+	},
+	"columnq": {
+		"question":"The puzzles were not overly confusing.",
+		"values1":[8,2,8,8,1,3,8,10,4,10,5,7,9,7,7,5,6,5,10,10,6,5,10,7,5,1,7,8],
+		"values2":[9,10,7,7,10,10,6,8,8,7,8,3,10,9,6,6,9,8,2,9,10,10,10,10,],
+	},
+}

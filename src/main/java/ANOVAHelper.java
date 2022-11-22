@@ -1,18 +1,42 @@
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
+
+import java.io.FileReader;
 import java.text.DecimalFormat;
 
 import static java.lang.System.out;
 
 public class ANOVAHelper {
-    static float[] numbersA = {12, 9, 11, 17, 21, 16, 23, 14, 15, 24};  // set A
-    static float[] numbersB = {5, 8, 11, 9, 12, 6, 8, 7, 13, 11};  // set B
-    static float nA = numbersA.length;  // n of Set A (# participants)
-    static float nB = numbersB.length;  // n of Set B (# participants)
-    static float N = nA + nB;  // N of study (# total participation)
     static float k = 2;  // K of study (# groups)
     private static final DecimalFormat trimDigits = new DecimalFormat("#.##");
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Object dataReader = new JSONParser().parse(new FileReader("data/values.json"));
+        JSONObject dataJSON = (JSONObject) dataReader;
+        Object[] dataKeys = dataJSON.keySet().toArray();
+
+        for (Object dataKey : dataKeys) {
+            JSONObject questionSet = (JSONObject) dataJSON.get(dataKey);
+            //out.println(oo.toString());
+            Object question = questionSet.get("question");
+            Object values1 = questionSet.get("values1");
+            Object values2 = questionSet.get("values1");
+            out.println(values1);
+            out.println(values2);
+            out.println(question);
+            out.println();
+        }
+
+    }
+
+    public static void processSet(JSONObject researchSet) {
+        float[] numbersA = {5, 8, 11, 9, 12, 6, 8, 7, 13, 11};  // set B
+        float[] numbersB = {5, 8, 11, 9, 12, 6, 8, 7, 13, 11};  // set B
+        float nA = numbersA.length;  // n of Set A (# participants)
+        float nB = numbersB.length;  // n of Set B (# participants)
+        float N = nA + nB;  // N of study (# total participation)
+
         float meanA = getMean(numbersA);  // get A mean
         float meanB = getMean(numbersB);  // get B mean
         float totalMean = getMean(new float[]{meanA, meanB});  // get study mean
@@ -31,11 +55,11 @@ public class ANOVAHelper {
         out.println();
 
         // print ANOVA table
-        printANOVATable(meanA, meanB, totalMean);
+        printANOVATable(meanA, meanB, totalMean, numbersA, numbersB, N);
     }
 
     // helper method written to perform one-way ANOVA and print the results
-    public static void printANOVATable(float meanA, float meanB, float totalMean) {
+    public static void printANOVATable(float meanA, float meanB, float totalMean, float[] numbersA, float[] numbersB, float N) {
         int counterA = 0;
         int counterB = 0;
         float ssFactor = 0;
