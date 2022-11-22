@@ -1,8 +1,11 @@
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 import java.io.FileReader;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import static java.lang.System.out;
 
@@ -19,20 +22,32 @@ public class ANOVAHelper {
         for (Object dataKey : dataKeys) {
             JSONObject questionSet = (JSONObject) dataJSON.get(dataKey);
             //out.println(oo.toString());
-            Object question = questionSet.get("question");
-            Object values1 = questionSet.get("values1");
-            Object values2 = questionSet.get("values1");
-            out.println(values1);
-            out.println(values2);
+            String question = questionSet.get("question").toString();
+            JSONArray values1 = (JSONArray) questionSet.get("values1");
+            JSONArray values2 = (JSONArray) questionSet.get("values2");
+
+            Iterator<Long> iterator1 = values1.iterator();
+            Iterator<Long> iterator2 = values2.iterator();
+
+            ArrayList<Long> list1 = new ArrayList<>();
+            ArrayList<Long> list2 = new ArrayList<>();
+
+            while(iterator1.hasNext()) list1.add(iterator1.next());
+            while(iterator2.hasNext()) list2.add(iterator2.next());
+
             out.println(question);
-            out.println();
+            out.println(values1);
+            for (Long l : list1) out.print(l + " ");
+            out.println("\n"+values2);
+            for (Long l : list2) out.print(l + " ");
+            out.println("\n");
         }
 
     }
 
-    public static void processSet(JSONObject researchSet) {
-        float[] numbersA = {5, 8, 11, 9, 12, 6, 8, 7, 13, 11};  // set B
-        float[] numbersB = {5, 8, 11, 9, 12, 6, 8, 7, 13, 11};  // set B
+    public static void processSet(float[] numbersA, float[] numbersB) {
+        //float[] numbersA = {5, 8, 11, 9, 12, 6, 8, 7, 13, 11};  // set B
+        //float[] numbersB = {5, 8, 11, 9, 12, 6, 8, 7, 13, 11};  // set B
         float nA = numbersA.length;  // n of Set A (# participants)
         float nB = numbersB.length;  // n of Set B (# participants)
         float N = nA + nB;  // N of study (# total participation)
