@@ -37,9 +37,9 @@ public class ANOVAHelper {
             Float[] numbers1 = list1.toArray(new Float[0]);  // set A
             Float[] numbers2 = list2.toArray(new Float[0]);  // set B
 
-            out.println("==================================================================================================");
+            out.println("------------------------------------------------------------------------------------------------");
             out.println("Research Question: " + question);
-            out.println("==================================================================================================");
+            out.println("------------------------------------------------------------------------------------------------");
             out.println("Responses, Session 1: " + values1);
             out.println("Responses, Session 2: " + values2);
             out.println("------------------------------------------------");
@@ -140,7 +140,7 @@ public class ANOVAHelper {
         out.printf("Mean Sqares/F Ratio:\t mSq(Factor): %s\t mSq(Error): %s\t F Ratio: %s",
                 trimDigits.format(meanSqrFactor),trimDigits.format(meanSqrError),trimDigits.format(fRatio));
 
-        out.println("\n==================================================================================================\n");
+        out.println("\n------------------------------------------------------------------------------------------------\n");
     }
 
     // helper method to return the mean of a float array
